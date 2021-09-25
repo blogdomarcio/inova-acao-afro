@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+
+
+    <div class="container">
+
+        <h2>Daily Time Series with Splits and Dividend Events</h2>
+
+        <br>
+
+        <form action="" method="post">
+
+            {% csrf_token %}
+
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+
+                    <select name="symbol" id="symbol" class="form-control" style="width: 100%"
+                            required>
+
+                        <option selected value="">Selecione a Empresa</option>
+
+                            <option value="IBM"> IBM (United States) </option>
+                            <option value="TSCO.LON"> Tesco PLC (UK - London Stock Exchange) </option>
+                            <option value="SHOP.TRT"> Shopify Inc (Canada - Toronto Stock Exchange) </option>
+                            <option value="DAI.DEX"> Daimler AG (Germany - XETRA) </option>
+
+
+
+                    </select>
+                </div>
+
+                <br><br>
+
+                <label for="data"> Digite a Data para Pesquisa </label>
+                <input type="date"  required name="data" class="form-control">
+
+
+                <br>
+                <button type="submit" class="btn btn-primary"> Pesquisar</button>
+
+
+        </form>
+
+        <hr>
+        <br>
+
+        Valores do Dia : <strong> {{ empresa }} - {{ dia | date:'d/m/Y' }} </strong>
+        <br>
+
+        <br>
+
+
+        <p>Open : {{ open }} </p>
+        <p>High : {{ high }} </p>
+        <p>Low : {{ low }} </p>
+        <p>Close : {{ close }} </p>
+        <p>Ajusted : {{ adjusted }} </p>
+
+        <hr>
+        {#    {{ filto }}#}
+
+        <hr>
+
+        {#    {{ data }}#}
+
+    </div>
+
+{% endblock %}
