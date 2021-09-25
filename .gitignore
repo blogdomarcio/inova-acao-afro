@@ -1,0 +1,9 @@
+/_virtual/
+/_venv
+/.idea/
+/.vscode/
+/migrations/
+
+db.sqlite3
+
+.env
