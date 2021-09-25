@@ -19,6 +19,11 @@
 
     <link href="{% static 'css/carousel.css' %}" rel="stylesheet">
 
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+
 
     <style>
       .bd-placeholder-img {
@@ -41,6 +46,9 @@
 {% block main %}
 
 {% endblock %}
+
+{% load sweetify %}
+{% sweetify %}
 
 
 </body>

@@ -2,3 +2,4 @@ Django==3.2.7
 django-bootstrap5==2.1.2
 python-decouple==3.4
 requests==2.26.0
+sweetify==2.0.0
