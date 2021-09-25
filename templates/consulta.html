@@ -6,8 +6,16 @@
 
     <div class="container">
 
-        <h2>Daily Time Series with Splits and Dividend Events</h2>
+        <div class="text-center">
+            <a href="https://conteudo.sharerh.com/inova-acao-afro-cesar" target="_blank"><img src="https://d335luupugsy2.cloudfront.net/cms/files/68179/1627575524/$iz6ludp9ol" alt="" width="200px"></a>
+            <h2 class="text-center">InovAção Afro 2021 - Python (Django)</h2>
 
+
+            <br>
+
+            <h2 class="card-title">Daily Time Series with Splits and Dividend Events</h2>
+
+        </div>
         <br>
 
         <form action="" method="post">
@@ -15,33 +23,35 @@
             {% csrf_token %}
 
 
-            <div class="form-row">
-                <div class="form-group col-md-12">
+            <div class="row">
+
+                <div class="form-group col-md-8">
 
                     <select name="symbol" id="symbol" class="form-control" style="width: 100%"
                             required>
 
                         <option selected value="">Selecione a Empresa</option>
 
-                            <option value="IBM"> IBM (United States) </option>
-                            <option value="TSCO.LON"> Tesco PLC (UK - London Stock Exchange) </option>
-                            <option value="SHOP.TRT"> Shopify Inc (Canada - Toronto Stock Exchange) </option>
-                            <option value="DAI.DEX"> Daimler AG (Germany - XETRA) </option>
-
-
+                        <option value="IBM"> IBM (United States)</option>
+                        <option value="TSCO.LON"> Tesco PLC (UK - London Stock Exchange)</option>
+                        <option value="SHOP.TRT"> Shopify Inc (Canada - Toronto Stock Exchange)</option>
+                        <option value="DAI.DEX"> Daimler AG (Germany - XETRA)</option>
 
                     </select>
                 </div>
 
-                <br><br>
+                <div class="form-group col-md-3">
 
-                <label for="data"> Digite a Data para Pesquisa </label>
-                <input type="date"  required name="data" class="form-control">
+                    {#                    <label for="data"> Digite a Data para Pesquisa </label>#}
+                    <input type="date" required name="data" class="form-control">
 
+                </div>
 
-                <br>
-                <button type="submit" class="btn btn-primary"> Pesquisar</button>
+                <div class="form-group col-md-1">
+                    <button type="submit" class="btn btn-primary"> Pesquisar</button>
+                </div>
 
+            </div>
 
         </form>
 
@@ -66,6 +76,13 @@
         <hr>
 
         {#    {{ data }}#}
+
+
+        <footer>
+
+            <div class="cancel-link">Desenvolvimento: Claudio Marcio <a href="https://www.linkedin.com/in/blogdomarcio/" target="_blank"> @blogdomarcio </a></div>
+
+        </footer>
 
     </div>
 
