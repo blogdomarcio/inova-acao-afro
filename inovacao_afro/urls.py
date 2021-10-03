@@ -22,6 +22,7 @@ from django.contrib.auth import views as auth_views
 from inovacao_afro import settings
 
 urlpatterns = [
+    path('admin/', include('smuggler.urls')),  # before admin url patterns!
     path('admin/', admin.site.urls),
     path('', include('web.urls')),
     path('peoples/', include('peoples.urls')),
