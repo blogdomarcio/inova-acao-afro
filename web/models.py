@@ -5,6 +5,7 @@ from util.util import generate_nome
 
 class Curriculo(models.Model):
     nome = models.CharField(max_length=150)
+    profissao = models.CharField(max_length=150, null=True, blank=True)
     phone = models.CharField(max_length=14, null=True, blank=True)
     email = models.EmailField(max_length=50,  null=True, blank=True)
     facebook = models.CharField(max_length=50,  null=True, blank=True)
