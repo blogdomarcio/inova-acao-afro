@@ -1,0 +1,80 @@
+{% extends 'people/dashboard/base.html' %}
+
+
+{% block content %}
+
+     <section class="content">
+        <div class="container-fluid">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ alunos.count }}</h3>
+
+                            <p>CLIENTES</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person"></i>
+                        </div>
+                        <a href="{% url 'alunos' %}" class="small-box-footer">Veja mais... <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{ matriculas.count }} </h3>
+
+                            <p>{% if matriculas.count > 1 %} PLANOS {% else %} PLANOS {% endif %}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-stats-bars"></i>
+                        </div>
+                        <a href="{% url 'matriculas' %}#" class="small-box-footer">Veja mais <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ turmas.count }}</h3>
+
+                            <p>CADASTROS</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="{% url 'turmas' %}" class="small-box-footer">Veja mais... <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{ boletos.count }}</h3>
+
+                            <p>{% if boletos.count > 1 %}MENSALIDADES {% else %}MENSALIDADE{% endif %}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-pie-graph"></i>
+                        </div>
+                        <a href="{% url 'financeiro' %}" class="small-box-footer">Veja mais...<i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+
+
+        </div>
+    </section>
+
+{% endblock %}

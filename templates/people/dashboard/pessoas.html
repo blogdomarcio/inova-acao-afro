@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+
+    <div class="container">
+
+        <h1>Lista de Pessoas</h1>
+
+        <ol>
+            {% for p in pessoas %}
+                <li>{{ p }}</li>
+            {% endfor %}
+
+        </ol>
+    </div>
+
+{% endblock %}
