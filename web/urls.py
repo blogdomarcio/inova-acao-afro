@@ -4,5 +4,8 @@ from web import views
 
 urlpatterns = [
     # path('', views.index, name='index'),
-    path('', views.consulta, name='consulta'),
+    path('', views.curiculo, name='curiculo'),
+    path('consulta', views.consulta, name='consulta'),
+    path('email', views.email, name='email'),
+
 ]

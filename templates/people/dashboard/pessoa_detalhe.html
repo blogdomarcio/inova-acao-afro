@@ -1,0 +1,229 @@
+{% extends 'people/dashboard/base.html' %}
+{% load static %}
+{% load l10n %}
+
+
+{% block topo %}
+    <li class="breadcrumb-item active"><a href="{% url 'lista' %}"> PESSOAS </a></li>
+    <li class="breadcrumb-item active"> {{ pessoa | upper }} </li>
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="container">
+
+            <div class="card">
+                <div class="card-header">
+                    {#                    <h3 class="card-title">Lista de Pessoas Cadastrados </h3>#}
+                    {#                    <br>#}
+                    {#                    <hr>#}
+
+                    {#                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">#}
+                    {#                        Novo Cadastro#}
+                    {#                    </button>#}
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                    <form method="post" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="modal-content">
+                            <div class="modal-body">
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="bairro">Nome</label>
+                                        <input type="text" class="form-control" id="nome" name="nome" value="{{ pessoa }}"
+                                               placeholder="Nome da Pessoa" required autocomplete="off">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="bairro">CPF</label>
+                                        <input type="text" class="form-control cpf" id="cpf" name="cpf" value="{{ pessoa.cpf }}"
+                                               placeholder="" autocomplete="off" required>
+                                    </div>
+
+
+                                    <div class="form-group col-md-3">
+                                        <label for="bairro">RG</label>
+                                        <input type="text" class="form-control" id="rg" name="rg" value="{{ pessoa.rg }}"
+                                               placeholder="" autocomplete="off" required>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-3">
+                                        <label for="bairro">Data Nascimento</label>
+                                        <input type="date" class="form-control" id="data_nasc" name="data_nasc" value="{{ pessoa.data_nasc | date:'Y-m-d' }}"
+                                               placeholder="" autocomplete="off" required>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="bairro">Celular</label>
+                                        <input type="text" class="form-control celular" id="celular" name="celular" value="{{ pessoa.celular }}"
+                                               placeholder="" autocomplete="off" required>
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="bairro">Peso {{ pessoa.peso }} </label>
+                                        <input type="number" step="0.01" class="form-control" id="peso" name="peso" value="{{ pessoa.peso | floatformat:2 }}"
+                                               placeholder="" autocomplete="off">
+                                    </div>
+
+                                    <div class="form-group col-md-3">
+                                        <label for="altura">Altura {{ pessoa.altura }}</label>
+                                        <input type="number" class="form-control"  step="0.010" min="0.00" max="1000.00" id="altura" name="altura" value="{{ pessoa.altura | floatformat:2  }}"
+                                                 autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="pai">Pai</label>
+                                        <input type="text" class="form-control" id="pai" name="pai" value="{{ pessoa.pai }}"
+                                               placeholder="" autocomplete="off" required>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="mae">Mae</label>
+                                        <input type="text" class="form-control" id="mae" name="mae" value="{{ pessoa.mae }}"
+                                               placeholder="" autocomplete="off" required>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    {#                        <div class="form-group col-md-3">#}
+                                    {#                            <label for="descricao">Altura</label>#}
+                                    {#                            <input type="number"  step="0.01" class="form-control" id="valor" name="valor"#}
+                                    {#                                   placeholder="" autocomplete="off">#}
+                                    {##}
+                                    {#                        </div>#}
+
+                                    {#                         <div class="form-group col-md-3">#}
+                                    {#                            <label for="descricao">Peso</label>#}
+                                    {#                            <input type="number" step="0.01" class="form-control" id="valor" name="valor"#}
+                                    {#                                   placeholder="" autocomplete="off">#}
+                                    {##}
+                                    {#                        </div>#}
+
+                                    <div class="form-group col-md-3">
+                                        <label for="inputEmail4">Tipo Sanguíneo</label>
+                                        <select name="tipo_sanguineo" id="tipo_sanguineo"
+                                                class="js-example-responsive"
+                                                style="width: 100%">
+                                            <option selected value="{{ pessoa.tipo_sanguineo }}">{{ pessoa.tipo_sanguineo }}</option>
+
+                                            <option value="A-">A-</option>
+                                            <option value="A+">A+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="O-">O-</option>
+                                            <option value="O+">O+</option>
+
+
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group col-md-3">
+                                        <label for="inputEmail4">Sexo</label>
+                                        <select name="sexo" id="sexo"
+                                                class="js-example-responsive"
+                                                style="width: 100%">
+                                            <option selected value="{{ pessoa.sexo }}"> {% if pessoa.sexo == 'M' %} Masculino {% else %} Feminino {% endif %} </option>
+
+                                            <option value="M"> Masculino </option>
+                                            <option value="F"> Feminino </option>
+
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                {#                        <div class="form-row">#}
+                                {#                            <div class="form-group col-md-12">#}
+                                {##}
+                                {#                                <select name="cidade" id="cidade" class="js-example-responsive" style="width: 100%" required>#}
+                                {#                                    <option selected value="">Selecione o Cidade</option>#}
+                                {#                                    {% for c in cidades %}#}
+                                {#                                        <option value="{{ c.id }}"> {{ c.nome }} - {{ c.estado }} </option>#}
+                                {#                                    {% endfor %}#}
+                                {##}
+                                {#                                </select>#}
+                                {#                            </div>#}
+                                {#                        </div>#}
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'lista' %}" class="btn btn-secondary">Voltar</a>
+
+                                <button type="submit" class="btn btn-primary">Atualizar</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    {% include 'people/dashboard/modals/m_pessoa.html' %}
+
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="{% static 'plugins/datatables/jquery.dataTables.js' %} "></script>
+    <script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.js' %} "></script>
+
+
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "order": [[0, 'asc']],
+                "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+                "iDisplayLength": 50,
+                "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+
+
+                }
+            });
+
+        });
+
+    </script>
+
+{% endblock %}

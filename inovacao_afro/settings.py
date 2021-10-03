@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'sweetify',
+    'anymail',
     'web',
+    'peoples',
 ]
 
 MIDDLEWARE = [
@@ -109,9 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bahia'
 
 USE_I18N = True
 
@@ -130,11 +132,29 @@ STATIC_ROOT = os.path.join(APP_ROOT, 'static')
 
 MEDIA_ROOT = os.path.join(APP_ROOT, '/fotos/')
 
-MEDIA_URL = "/media/"
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+THOUSAND_SEPARATOR=',',
+USE_THOUSAND_SEPARATOR=True
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+MEDIA_URL = "itapetingaonline.s3-sa-east-1.amazonaws.com/"
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'itapetingaonline')
+S3DIRECT_REGION = os.environ.get('S3DIRECT_REGION', 'sa-east-1')
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_DEFAULT_ACL = 'public-read'
+
+ANYMAIL = {
+    # (exact settings here depend on your ESP...)
+    "MAILGUN_API_KEY": config('MAILGUN_API_KEY'),
+    "MAILGUN_SENDER_DOMAIN": 'mg.marcioweb.com.br',  # your Mailgun domain, if needed
+}
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
+DEFAULT_FROM_EMAIL = "marcio@marcioweb.com.br"  # if you don't already have this in settings
+SERVER_EMAIL = "blogdomarcio@live.com"  # ditto (default from-email for Django errors)

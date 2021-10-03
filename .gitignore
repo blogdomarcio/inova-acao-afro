@@ -2,8 +2,10 @@
 /_venv
 /.idea/
 /.vscode/
-/migrations/
+migrations
 
 db.sqlite3
 
 .env
+__pycache__
+/web/migrations

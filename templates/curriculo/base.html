@@ -1,10 +1,60 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block title %}
+
+    {% endblock %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{% static '' %}css/aos.css?ver=1.1.0" rel="stylesheet">
+    <link href="{% static '' %}css/bootstrap.min.css?ver=1.1.0" rel="stylesheet">
+    <link href="{% static '' %}css/main.css?ver=1.1.0" rel="stylesheet">
+    <noscript>
+        <style type="text/css">
+            [data-aos] {
+                opacity: 1 !important;
+                transform: translate(0) scale(1) !important;
+            }
+        </style>
+    </noscript>
 </head>
-<body>
-$END$
+<body id="top">
+<header>
+    {% include 'curriculo/partials/_navbar.html' %}
+</header>
+
+{% block main %}
+
+
+{% endblock %}
+
+
+
+<footer class="footer">
+    {% include 'curriculo/partials/footer.html' %}
+</footer>
+<script src="{% static '' %}js/core/jquery.3.2.1.min.js?ver=1.1.0"></script>
+<script src="{% static '' %}js/core/popper.min.js?ver=1.1.0"></script>
+<script src="{% static '' %}js/core/bootstrap.min.js?ver=1.1.0"></script>
+<script src="{% static '' %}js/now-ui-kit.js?ver=1.1.0"></script>
+<script src="{% static '' %}js/aos.js?ver=1.1.0"></script>
+<script src="{% static '' %}scripts/main.js?ver=1.1.0"></script>
+
+{% load sweetify %}
+{% sweetify %}
+
+
 </body>
 </html>

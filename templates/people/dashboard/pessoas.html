@@ -1,18 +1,120 @@
-{% extends 'base.html' %}
+{% extends 'people/dashboard/base.html' %}
+{% load static %}
 
 
-{% block main %}
+{% block topo %}
+    <li class="breadcrumb-item active">PESSOAS</li>
+{% endblock %}
 
-    <div class="container">
+{% block content %}
 
-        <h1>Lista de Pessoas</h1>
+    <section class="content">
+        <div class="container">
 
-        <ol>
-            {% for p in pessoas %}
-                <li>{{ p }}</li>
-            {% endfor %}
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Lista de Pessoas Cadastrados </h3>
+                    <br>
+                    <hr>
 
-        </ol>
-    </div>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">
+                        Novo Cadastro
+                    </button>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Celular</th>
+                            <th>Data Nascimento</th>
+                            <th>Idade</th>
+
+
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for p in pessoas %}
+                            <tr>
+                                <td><a href="{% url 'detalhe' p.codigo %}">{{ p }} </a></td>
+                                <td><a href="#">{{ p.cpf }} </a></td>
+                                <td style="text-align: center">{{ p.celular | default_if_none:'' }} </td>
+                                <td style="text-align: center">{{ p.data_nasc | date:'d/m/Y' }}</td>
+                                <td>{{ p.data_nasc | timesince  }}</td>
+
+                                <td>
+                                    <a href=""> <i class="far fa-edit nav-icon fa-1x"></i></a>
+                                    <a href=""> <i class="far fa-circle nav-icon fa-1x"></i></a>
+
+
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    {% include 'people/dashboard/modals/m_pessoa.html' %}
+
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="{% static 'plugins/datatables/jquery.dataTables.js' %} "></script>
+    <script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.js' %} "></script>
+
+
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "order": [[0, 'asc']],
+                "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+                "iDisplayLength": 50,
+                "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+
+
+                }
+            });
+
+        });
+
+    </script>
 
 {% endblock %}
