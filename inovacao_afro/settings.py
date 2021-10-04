@@ -65,8 +65,7 @@ ROOT_URLCONF = 'inovacao_afro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -159,3 +158,10 @@ ANYMAIL = {
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
 DEFAULT_FROM_EMAIL = "marcio@marcioweb.com.br"  # if you don't already have this in settings
 SERVER_EMAIL = "blogdomarcio@live.com"  # ditto (default from-email for Django errors)
+
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/pessoas'
+
+LOGOUT_REDIRECT_URL = '/pessoas'

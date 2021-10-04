@@ -1,24 +1,3 @@
-{#<div>#}
-{#    <div style="background-color: white; padding: 5px; border-radius:  5px; text-align: center">#}
-{##}
-{##}
-{#        <form action="{% url 'matricula_busca' %}" method="post">#}
-{##}
-{#            {% csrf_token %}#}
-{##}
-{#            <input class="" type="text" name="texto2021" id="texto2021" placeholder="busque pelo nome"#}
-{#                   required>#}
-{#            <br>#}
-{##}
-{#            <button style="margin-top: 5px" type="submit" class="btn btn-info">Buscar Aluno 2021#}
-{#            </button>#}
-{##}
-{#        </form>#}
-{##}
-{#    </div>#}
-{##}
-{#</div>#}
-
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
@@ -27,298 +6,52 @@
             <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                   {{ empresa }}
+                    {{ empresa }}
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview">
-                {#              <li class="nav-item">#}
-                {#                <a href="./index.html" class="nav-link active">#}
-                {#                  <i class="far fa-circle nav-icon"></i>#}
-                {#                  <p>Dashboard v1</p>#}
-                {#                </a>#}
-                {#              </li>#}
-                {#              <li class="nav-item">#}
-                {#                <a href="./index2.html" class="nav-link">#}
-                {#                  <i class="far fa-circle nav-icon"></i>#}
-                {#                  <p>Dashboard v2</p>#}
-                {#                </a>#}
-                {#              </li>#}
-                {#              <li class="nav-item">#}
-                {#                <a href="./index3.html" class="nav-link">#}
-                {#                  <i class="far fa-circle nav-icon"></i>#}
-                {#                  <p>Dashboard v3</p>#}
-                {#                </a>#}
-                {#              </li>#}
-                {#            </ul>#}
-                {#          </li>#}
-
-                {#                 <li class="nav-item">#}
-                {#                   <div style="background-color: white; padding: 5px; border-radius:  5px; text-align: center">#}
-                {##}
-                {##}
-                {##}
-                {#                        <form action="{% url 'prematricula_busca' %}" method="post">#}
-                {##}
-                {#                            {% csrf_token %}#}
-                {##}
-                {#                            <input type="text" name="texto" id="texto" placeholder="nome ou sobrenome" required>#}
-                {#                            <br>#}
-                {##}
-                {#                             <button   style="margin-top: 5px" type="submit" class="btn btn-info">Buscar Aluno 2020</button>#}
-                {##}
-                {#                        </form>#}
-                {##}
-                {#                   </div>#}
-                {##}
-                {#                     <br>#}
-                {##}
-
-
 
 
                 <li class="nav-item">
-                    <a href="{% url 'lista' %}" class="nav-link">
+                    <a href="{% url 'pessoas:lista' %}" class="nav-link">
                         <i class="nav-icon far fa-circle text-danger"></i>
                         <p>
-                            PESSOAS
+                            LISTA GERAL
                             {#                <span class="right badge badge-danger">New</span>#}
                         </p>
                     </a>
                 </li>
 
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <li class="nav-item">
+                    <a href="{% url 'pessoas:lista_homens' %}" class="nav-link">
                         <i class="nav-icon far fa-circle text-danger"></i>
                         <p>
-                            CURRICULOS
+                            HOMENS
                             {#                <span class="right badge badge-danger">New</span>#}
                         </p>
                     </a>
                 </li>
 
-{#                      <li class="nav-item">#}
-{#                    <a href="{% url 'matriculas' %}" class="nav-link">#}
-{#                        <i class="nav-icon far fa-circle text-danger"></i>#}
-{#                        <p>#}
-{#                            Matrículas#}
+                      <li class="nav-item">
+                    <a href="{% url 'pessoas:lista_mulheres' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-danger"></i>
+                        <p>
+                            MULHERES
                             {#                <span class="right badge badge-danger">New</span>#}
-{#                        </p>#}
-{#                    </a>#}
-{#                </li>#}
-
-
-{#                       <li class="nav-item">#}
-{#                    <a href="{% url 'matriculas' %}" class="nav-link">#}
-{#                        <i class="nav-icon far fa-circle text-danger"></i>#}
-{#                        <p>#}
-{#                            Financeiro#}
-                            {#                <span class="right badge badge-danger">New</span>#}
-{#                        </p>#}
-{#                    </a>#}
-{#                </li>#}
-
-{#                <li class="nav-item">#}
-{#                    <a href="#" class="nav-link">#}
-{#                        <i class="nav-icon far fa-circle text-danger"></i>#}
-{#                        <p>#}
-{#                            Alunos#}
-                            {#                <span class="right badge badge-danger">New</span>#}
-{#                        </p>#}
-{#                    </a>#}
-{#                </li>#}
-
-
-                {#                 <li class="nav-item">#}
-                {#                    <a href="{% url 'prematricula' %}" class="nav-link">#}
-                {#                        <i class="nav-icon far fa-circle text-success"></i>#}
-                {#                        <p>#}
-                {#                            Pré-Matrículas#}
-                {#                <span class="right badge badge-danger">New</span>#}
-                {#                        </p>#}
-                {#                    </a>#}
-                {#                </li>#}
-
-{#                <li class="nav-item has-treeview">#}
-{#                    <a href="#" class="nav-link">#}
-{#                        <i class="nav-icon fas fa-chart-pie"></i>#}
-{#                        <p>#}
-{#                            Diversos#}
-{#                            <i class="right fas fa-angle-left"></i>#}
-{#                        </p>#}
-{#                    </a>#}
-{#                    <ul class="nav nav-treeview">#}
-
-
-{#                        <li class="nav-item has-treeview">#}
-{#                            <a href="#" class="nav-link">#}
-{#                                <i class="nav-icon fas fa-chart-pie"></i>#}
-{#                                <p>#}
-{#                                    Coordenação#}
-{#                                    <i class="right fas fa-angle-left"></i>#}
-{#                                </p>#}
-{#                            </a>#}
-{#                            <ul class="nav nav-treeview">#}
-{##}
-{#                                <li class="nav-item">#}
-{#                                    <a href="#" class="nav-link">#}
-{#                                        <i class="far fa-circle nav-icon"></i>#}
-{#                                        <p>1 - Escolas</p>#}
-{#                                    </a>#}
-{#                                </li>#}
-{##}
-{#                                <li class="nav-item">#}
-{#                                    <a href="#" class="nav-link">#}
-{#                                        <i class="far fa-circle nav-icon"></i>#}
-{#                                        <p>2 - Salas de Aula</p>#}
-{#                                    </a>#}
-{#                                </li>#}
-{##}
-{#                                <li class="nav-item">#}
-{#                                    <a href="#" class="nav-link">#}
-{#                                        <i class="far fa-circle nav-icon"></i>#}
-{#                                        <p>3 - Cursos / Séries </p>#}
-{#                                    </a>#}
-{#                                </li>#}
-{##}
-{##}
-{#                            </ul>#}
-{#                        </li>#}
-{##}
-{##}
-{#                        <li class="nav-item has-treeview">#}
-{#                            <a href="#" class="nav-link">#}
-{#                                <i class="nav-icon fas fa-tree"></i>#}
-{#                                <p>#}
-{#                                    Secretaria#}
-{#                                    <i class="fas fa-angle-left right"></i>#}
-{#                                </p>#}
-{#                            </a>#}
-                            <ul class="nav nav-treeview">
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'turmas' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Turmas</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'responsaveis' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Responsáveis</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {#                        <li class="nav-item">#}
-                                {#                            <a href="pages/UI/buttons.html" class="nav-link">#}
-                                {#                                <i class="far fa-circle nav-icon"></i>#}
-                                {#                                <p>Alunos</p>#}
-                                {#                            </a>#}
-                                {#                        </li>#}
-                                {#                        <li class="nav-item">#}
-                                {#                            <a href="pages/UI/sliders.html" class="nav-link">#}
-                                {#                                <i class="far fa-circle nav-icon"></i>#}
-                                {#                                <p>Matrículas</p>#}
-                                {#                            </a>#}
-                                {#                        </li>#}
-                                {#                        <li class="nav-item">#}
-                                {#                            <a href="pages/UI/modals.html" class="nav-link">#}
-                                {#                                <i class="far fa-circle nav-icon"></i>#}
-                                {#                                <p>Modals & Alerts</p>#}
-                                {#                            </a>#}
-                                {#                        </li>#}
-                                {#                        <li class="nav-item">#}
-                                {#                            <a href="pages/UI/navbar.html" class="nav-link">#}
-                                {#                                <i class="far fa-circle nav-icon"></i>#}
-                                {#                                <p>Navbar & Tabs</p>#}
-                                {#                            </a>#}
-                                {#                        </li>#}
-                                {#                        <li class="nav-item">#}
-                                {#                            <a href="pages/UI/timeline.html" class="nav-link">#}
-                                {#                                <i class="far fa-circle nav-icon"></i>#}
-                                {#                                <p>Timeline</p>#}
-                                {#                            </a>#}
-                                {#                        </li>#}
-                                {#                        <li class="nav-item">#}
-                                {#                            <a href="pages/UI/ribbons.html" class="nav-link">#}
-                                {#                                <i class="far fa-circle nav-icon"></i>#}
-                                {#                                <p>Ribbons</p>#}
-                                {#                            </a>#}
-                                {#                        </li>#}
-                            </ul>
-                        </li>
-
-{#                        <li class="nav-item has-treeview">#}
-{#                            <a href="#" class="nav-link">#}
-{#                                <i class="nav-icon fas fa-copy"></i>#}
-{#                                <p>#}
-{#                                    Cadastros#}
-{#                                    <i class="fas fa-angle-left right"></i>#}
-                                    {#                            <span class="badge badge-info right">6</span>#}
-{#                                </p>#}
-{#                            </a>#}
-{#                            <ul class="nav nav-treeview">#}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'cidades' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Cidades</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'bairros' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Bairros</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'deficiencias' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Deficiências</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'documentos' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Documentos</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'educacenso' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Disciplinas (Educa Censo)</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'modalidades' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Modalidades</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {##}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'turnos' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Turnos</p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {##}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'funcoes' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Funções / Cargos </p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-                                {##}
-                                {#                                <li class="nav-item">#}
-                                {#                                    <a href="{% url 'gestores' %}" class="nav-link">#}
-                                {#                                        <i class="far fa-circle nav-icon"></i>#}
-                                {#                                        <p>Gestores </p>#}
-                                {#                                    </a>#}
-                                {#                                </li>#}
-{#                            </ul>#}
-{#                        </li>#}
-{##}
-{#                    </ul>#}
+                        </p>
+                    </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'pessoas:relatorios' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-danger"></i>
+                        <p>
+                            RELATÓRIOS
+                        </p>
+                    </a>
+                </li>
+
             </ul>
 
         </li>
@@ -326,6 +59,7 @@
 
 </nav>
 <!-- /.sidebar-menu -->
+
 </div>
 
 </aside>

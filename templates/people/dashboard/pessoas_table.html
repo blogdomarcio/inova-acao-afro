@@ -23,7 +23,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="example" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>Nome</th>
@@ -49,7 +49,7 @@
                                 <td style="text-align: center">
                                     <a href="{% url 'pessoas:detalhe' p.codigo %}"> <i class="far fa-edit nav-icon fa-1x"></i></a> &nbsp;
                                     <a href="{% url 'pessoas:excluir' p.codigo %}"> <i class="fas fa-trash nav-icon fa-1x"></i></a> &nbsp;
-                                    <a href="{% url 'pessoas:json' p.codigo %}" target="_blank"> <i class="fas fa-download nav-icon fa-1x" ></i></a>
+                                      <a href="{% url 'pessoas:json' p.codigo %}" target="_blank"> <i class="fas fa-download nav-icon fa-1x" ></i></a>
 
 
                                 </td>

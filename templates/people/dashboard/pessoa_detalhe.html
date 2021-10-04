@@ -4,7 +4,7 @@
 
 
 {% block topo %}
-    <li class="breadcrumb-item active"><a href="{% url 'lista' %}"> PESSOAS </a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'pessoas:lista' %}"> PESSOAS </a></li>
     <li class="breadcrumb-item active"> {{ pessoa | upper }} </li>
 {% endblock %}
 
@@ -15,6 +15,7 @@
 
             <div class="card">
                 <div class="card-header">
+                    <a href="{% url 'pessoas:json' pessoa.codigo %}"> <i class="fas fa-download nav-icon fa-1x"></i></a>
                     {#                    <h3 class="card-title">Lista de Pessoas Cadastrados </h3>#}
                     {#                    <br>#}
                     {#                    <hr>#}
@@ -148,26 +149,19 @@
                                 </div>
 
 
-                                {#                        <div class="form-row">#}
-                                {#                            <div class="form-group col-md-12">#}
-                                {##}
-                                {#                                <select name="cidade" id="cidade" class="js-example-responsive" style="width: 100%" required>#}
-                                {#                                    <option selected value="">Selecione o Cidade</option>#}
-                                {#                                    {% for c in cidades %}#}
-                                {#                                        <option value="{{ c.id }}"> {{ c.nome }} - {{ c.estado }} </option>#}
-                                {#                                    {% endfor %}#}
-                                {##}
-                                {#                                </select>#}
-                                {#                            </div>#}
-                                {#                        </div>#}
-
-
                             </div>
                             <div class="modal-footer">
-                                <a href="{% url 'lista' %}" class="btn btn-secondary">Voltar</a>
+                                <a href="{% url 'pessoas:lista' %}" class="btn btn-secondary">Voltar</a>
 
                                 <button type="submit" class="btn btn-primary">Atualizar</button>
+
+
+
                             </div>
+
+                     <div class="modal-footer">
+                            <a href="{% url 'pessoas:excluir' pessoa.codigo %}" class="btn btn-danger">Excluir</a>
+                        </div>
                     </form>
                 </div>
             </div>

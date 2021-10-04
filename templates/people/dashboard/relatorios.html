@@ -1,9 +1,10 @@
 {% extends 'people/dashboard/base.html' %}
 {% load static %}
+{% load l10n %}
 
 
 {% block topo %}
-    <li class="breadcrumb-item active">PESSOAS</li>
+    <li class="breadcrumb-item active"> RELATÓRIOS </li>
 {% endblock %}
 
 {% block content %}
@@ -13,53 +14,23 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Lista de Pessoas Cadastrados </h3>
-                    <br>
-                    <hr>
+                                        <h3 class="card-title">RELATÓRIOS </h3>
+                    {#                    <br>#}
+                    {#                    <hr>#}
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">
-                        Novo Cadastro
-                    </button>
+                    {#                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">#}
+                    {#                        Novo Cadastro#}
+                    {#                    </button>#}
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Celular</th>
-                            <th>Data Nascimento</th>
-                            <th>Idade</th>
 
+                    <ul>
 
-                            <th>Ações</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                        <li><a href="{% url 'pessoas:maisnovas' %}"> 10 Pessoas Mais Jovens </a>  | JSON <a href="{% url 'pessoas:json_maisnovas' %}" target="_blank"> <i class="fas fa-download nav-icon fa-1x"></i></a> </li>
+                        <li><a href="{% url 'pessoas:maisvelhas' %}"> 10 Pessoas Mais Velhas </a> | JSON <a href="{% url 'pessoas:json_maisvelhas' %}" target="_blank"> <i class="fas fa-download nav-icon fa-1x"></i></a> </li>
 
-                        {% for p in pessoas %}
-                            <tr>
-                                <td><a href="{% url 'pessoas:detalhe' p.codigo %}">{{ p }} </a></td>
-                                <td><a href="#">{{ p.cpf }} </a></td>
-                                <td style="text-align: center">{{ p.celular | default_if_none:'' }} </td>
-                                <td style="text-align: center">{{ p.data_nasc | date:'d/m/Y' }}</td>
-                                <td>{{ p.data_nasc | timesince  }}</td>
-
-                                <td style="text-align: center">
-                                    <a href="{% url 'pessoas:detalhe' p.codigo %}"> <i class="far fa-edit nav-icon fa-1x"></i></a> &nbsp;
-                                    <a href="{% url 'pessoas:excluir' p.codigo %}"> <i class="fas fa-trash nav-icon fa-1x"></i></a> &nbsp;
-                                    <a href="{% url 'pessoas:json' p.codigo %}" target="_blank"> <i class="fas fa-download nav-icon fa-1x" ></i></a>
-
-
-                                </td>
-
-                            </tr>
-                        {% endfor %}
-
-
-                        </tbody>
-                    </table>
+                    </ul>
 
                 </div>
             </div>

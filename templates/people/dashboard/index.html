@@ -3,7 +3,7 @@
 
 {% block content %}
 
-     <section class="content">
+    <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
@@ -18,63 +18,102 @@
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="{% url 'lista' %}" class="small-box-footer">Veja mais... <i
+                        <a href="{% url 'pessoas:lista' %}" class="small-box-footer">Acesse a Lista... <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
-{#                <div class="col-lg-3 col-6">#}
-{#                    <!-- small box -->#}
-{#                    <div class="small-box bg-success">#}
-{#                        <div class="inner">#}
-{#                            <h3>{{ matriculas.count }} </h3>#}
-{##}
-{#                            <p>{% if matriculas.count > 1 %} PLANOS {% else %} PLANOS {% endif %}</p>#}
-{#                        </div>#}
-{#                        <div class="icon">#}
-{#                            <i class="ion ion-stats-bars"></i>#}
-{#                        </div>#}
-{#                        <a href="##" class="small-box-footer">Veja mais <i#}
-{#                                class="fas fa-arrow-circle-right"></i></a>#}
-{#                    </div>#}
-{#                </div>#}
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{ masc }} </h3>
+
+                            <p> HOMENS </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person"></i>
+                        </div>
+                        <a href="{% url 'pessoas:lista_homens' %}" class="small-box-footer">Acesse a Lista... <i
+                                class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
                 <!-- ./col -->
-{#                <div class="col-lg-3 col-6">#}
-{#                    <!-- small box -->#}
-{#                    <div class="small-box bg-warning">#}
-{#                        <div class="inner">#}
-{#                            <h3>{{ turmas.count }}</h3>#}
-{##}
-{#                            <p>CADASTROS</p>#}
-{#                        </div>#}
-{#                        <div class="icon">#}
-{#                            <i class="ion ion-person-add"></i>#}
-{#                        </div>#}
-{#                        <a href="#" class="small-box-footer">Veja mais... <i#}
-{#                                class="fas fa-arrow-circle-right"></i></a>#}
-{#                    </div>#}
-{#                </div>#}
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ fem }}</h3>
+
+                            <p>MULHERES</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person"></i>
+                        </div>
+                        <a href="{% url 'pessoas:lista_mulheres' %}" class="small-box-footer">Acesse a Lista... <i
+                                class="fas fa-arrow-circle-right"></i></a>
+
+                    </div>
+                </div>
                 <!-- ./col -->
-{#                <div class="col-lg-3 col-6">#}
-{#                    <!-- small box -->#}
-{#                    <div class="small-box bg-danger">#}
-{#                        <div class="inner">#}
-{#                            <h3>{{ boletos.count }}</h3>#}
-{##}
-{#                            <p>{% if boletos.count > 1 %}MENSALIDADES {% else %}MENSALIDADE{% endif %}</p>#}
-{#                        </div>#}
-{#                        <div class="icon">#}
-{#                            <i class="ion ion-pie-graph"></i>#}
-{#                        </div>#}
-{#                        <a href="#" class="small-box-footer">Veja mais...<i#}
-{#                                class="fas fa-arrow-circle-right"></i></a>#}
-{#                    </div>#}
-{#                </div>#}
+                {#                <div class="col-lg-3 col-6">#}
+                {#                    <!-- small box -->#}
+                {#                    <div class="small-box bg-danger">#}
+                {#                        <div class="inner">#}
+                {#                            <h3>{{ boletos.count }}</h3>#}
+                {##}
+                {#                            <p>{% if boletos.count > 1 %}MENSALIDADES {% else %}MENSALIDADE{% endif %}</p>#}
+                {#                        </div>#}
+                {#                        <div class="icon">#}
+                {#                            <i class="ion ion-pie-graph"></i>#}
+                {#                        </div>#}
+                {#                        <a href="#" class="small-box-footer">Veja mais...<i#}
+                {#                                class="fas fa-arrow-circle-right"></i></a>#}
+                {#                    </div>#}
+                {#                </div>#}
                 <!-- ./col -->
+            </div>
+
+            <div class="container">
+
+                <form action="{% url 'pessoas:busca' %}" method="get">
+
+                    <div class="row">
+
+                        <div class="form-group col-md-6">
+
+                            <label for="tags">Busque por Nome</label>
+                            <input type="text" id="tags" name="nome" class="form-control">
+                        </div>
+
+                        <div class="form-group col-md-3">
+
+
+                            <button type="submit" class="btn btn-info" style="margin-top: 30px"> Buscar </button>
+
+                        </div>
+                    </div>
+
+                </form>
+
+
             </div>
 
 
         </div>
     </section>
+
+    <script>
+        $(function () {
+            var availableTags = [
+                {% for pessoa in pessoas %}
+                    "{{pessoa.nome}}",
+                {% endfor %}
+            ];
+            $("#tags").autocomplete({
+                source: availableTags
+            });
+        });
+    </script>
 
 {% endblock %}
