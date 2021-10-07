@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         if People.objects.exists():
-            print("A tabela de pessoas já foi populada. Nada a fazer.")
+            print("\n A tabela de pessoas já foi populada. Nada a fazer.")
         else:
             df = pd.read_csv('people_data.csv')
             df['sexo'] = df.sexo.apply(
@@ -18,6 +18,7 @@ class Command(BaseCommand):
             )
             data = df.to_dict('records')
 
-            objs = People.objects.bulk_create([People(**item) for item in data])
+            objs = People.objects.bulk_create(
+                [People(**item) for item in data])
 
             print(f"{len(objs)} pessoas inseridas")
