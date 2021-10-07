@@ -5,7 +5,6 @@ from django.db import models
 from datetime import datetime, date, timedelta
 
 
-
 class PeopleManager(models.Manager):
 
     def first_five_people(self):
@@ -13,7 +12,6 @@ class PeopleManager(models.Manager):
 
     def starts_with(self, text):
         return self.model.objects.filter(nome__istartswith=text)
-
 
 
 class People(models.Model):
@@ -35,7 +33,6 @@ class People(models.Model):
     peso = models.FloatField()
     tipo_sanguineo = models.CharField(max_length=4)
     codigo = models.CharField(max_length=15, blank=True, null=True)
-
 
     # @property
     # def idade(self):
