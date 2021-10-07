@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'anymail',
     'web',
     'peoples',
+    'banco',
 ]
 
 MIDDLEWARE = [
@@ -138,13 +139,14 @@ MEDIA_ROOT = os.path.join(APP_ROOT, '/fotos/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-THOUSAND_SEPARATOR=',',
-USE_THOUSAND_SEPARATOR=True
+THOUSAND_SEPARATOR = ',',
+USE_THOUSAND_SEPARATOR = True
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 MEDIA_URL = "itapetingaonline.s3-sa-east-1.amazonaws.com/"
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'itapetingaonline')
+AWS_STORAGE_BUCKET_NAME = os.environ.get(
+    'AWS_STORAGE_BUCKET_NAME', 'itapetingaonline')
 S3DIRECT_REGION = os.environ.get('S3DIRECT_REGION', 'sa-east-1')
 # STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -155,9 +157,13 @@ ANYMAIL = {
     "MAILGUN_API_KEY": config('MAILGUN_API_KEY'),
     "MAILGUN_SENDER_DOMAIN": 'mg.marcioweb.com.br',  # your Mailgun domain, if needed
 }
-EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
-DEFAULT_FROM_EMAIL = "marcio@marcioweb.com.br"  # if you don't already have this in settings
-SERVER_EMAIL = "blogdomarcio@live.com"  # ditto (default from-email for Django errors)
+
+# or sendgrid.EmailBackend, or...
+EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
+# if you don't already have this in settings
+DEFAULT_FROM_EMAIL = "marcio@marcioweb.com.br"
+# ditto (default from-email for Django errors)
+SERVER_EMAIL = "blogdomarcio@live.com"
 
 
 LOGIN_URL = '/login/'
