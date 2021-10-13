@@ -43,12 +43,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+    'rest_framework',
+    # 'rest_framework_swagger',
     'smuggler',
     'sweetify',
     'anymail',
     'web',
     'peoples',
     'banco',
+    'cartorio',
 ]
 
 MIDDLEWARE = [
@@ -109,6 +112,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 200
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -132,7 +145,6 @@ APP_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 STATIC_ROOT = os.path.join(APP_ROOT, 'static')
 
 MEDIA_ROOT = os.path.join(APP_ROOT, '/fotos/')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -164,7 +176,6 @@ EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 DEFAULT_FROM_EMAIL = "marcio@marcioweb.com.br"
 # ditto (default from-email for Django errors)
 SERVER_EMAIL = "blogdomarcio@live.com"
-
 
 LOGIN_URL = '/login/'
 

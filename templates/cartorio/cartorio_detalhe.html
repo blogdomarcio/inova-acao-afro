@@ -1,0 +1,118 @@
+{% extends 'people/dashboard/base.html' %}
+{% load static %}
+
+
+{% block topo %}
+    <li class="breadcrumb-item"><a href="{% url 'cartorio:index' %}">HOME</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'cartorio:estados'  %}"> ESTADOS </a> </li>
+    <li class="breadcrumb-item"><a href="{% url 'cartorio:estado_detalhe' cartorio.cidade.uf %}"> {{ cartorio.cidade.uf }}</a> </li>
+    <li class="breadcrumb-item"><a href="{% url 'cartorio:cidade' cartorio.cidade_id %}">  {{ cartorio.cidade | upper }}</a></li>
+    <li class="breadcrumb-item active">{{ cartorio }}</li>
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="container">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">NOME OFICIAL: <strong> {{ cartorio }} </strong></h3>
+                    <br>
+
+
+                    {#                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">#}
+                    {#                        Novo Cadastro#}
+                    {#                    </button>#}
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    {% if cartorio.nome_fantasia %} Nome Fantasia: <strong> {{ cartorio.nome_fantasia }}</strong>
+                        <br> {% endif %}
+                    {% if cartorio.cnpj %}CNPJ: <strong>{{ cartorio.cnpj }} </strong> {% endif %}| CNS: <strong> {% if cartorio.cns %} | {{ cartorio.cns }}</strong> <br>
+
+                    <br>
+
+                    {% if cartorio.juiz %}Nome do Juiz: <strong>{{ cartorio.juiz }}</strong> <br> {% endif %}
+                    Nome do Titular: <strong>{{ cartorio.titular }} </strong> | Nome do Substituto: <strong>{{ cartorio.substituto }} </strong> <br>
+
+                    <br>
+
+                    Comarca: <strong>{{ cartorio.comarca }} </strong> | Entrância:
+                    <strong>{{ cartorio.entrancia }} </strong> <br>
+                    Área de Abrangência:<strong> {{ cartorio.abrangencia }}</strong> <br>
+                    Atribuições:<strong>{{ cartorio.atribuicoes }}</strong> <br>
+                    <br>
+                    Horário de Funcionamento: <strong>{{ cartorio.horario }}</strong> <br>
+                    Endereço:<strong> {{ cartorio.endereco }} </strong> <br>
+                    Bairro: <strong>{{ cartorio.bairro }} </strong>  | Município: <strong>{{ cartorio.cidade }}</strong> | CEP: <strong>{{ cartorio.cep }} </strong> {% endif    %}<br>
+
+                    <br>
+                    {% if cartorio.homepage %}Homepage: <strong>{{ cartorio.homepage }} </strong> {% endif %}
+                    {% if cartorio.email %} Email: <strong> {{ cartorio.email }}</strong>  <br> {% endif %}
+                    Telefone: <strong> {{ cartorio.telefone }}</strong> | Fax: <strong> {{ cartorio.fax }} </strong> <br>
+
+                    {% if cartorio.observacao %} Observação: <strong>{{ cartorio.observacao }} </strong>
+                        <br> {% endif %}
+
+                    Data de Instalação:<strong> {{ cartorio.data_inst }} </strong> | Última Atualização: <strong>{{ cartorio.data_ult_atual }} </strong> <br>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{#    {% include 'people/dashboard/modals/m_pessoa.html' %}#}
+
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="{% static 'plugins/datatables/jquery.dataTables.js' %} "></script>
+    <script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.js' %} "></script>
+
+
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "order": [[0, 'asc']],
+                "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+                "iDisplayLength": 50,
+                "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+
+
+                }
+            });
+
+        });
+
+    </script>
+
+{% endblock %}

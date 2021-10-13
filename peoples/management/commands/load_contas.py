@@ -18,8 +18,7 @@ class Command(BaseCommand):
 
         else:
 
-            dados = pd.read_csv('bank_accounts.csv', header=0,
-                                squeeze=True)
+            dados = pd.read_csv('bank_accounts.csv', header=0, squeeze=True)
 
             dadosDIC = dados.to_dict('records')
 

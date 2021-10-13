@@ -3,8 +3,7 @@
 
 
 {% block topo %}
-     <li class="breadcrumb-item"><a href="{% url 'pessoas:index' %}">HOME</a></li>
-    <li class="breadcrumb-item active">PESSOAS</li>
+    <li class="breadcrumb-item active">AGÊNCIAS BANCÁRIAS</li>
 {% endblock %}
 
 {% block content %}
@@ -14,43 +13,35 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Lista de Pessoas Cadastrados </h3>
+                    <h3 class="card-title">Lista de Agencias Cadastrados </h3>
                     <br>
                     <hr>
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">
-                        Novo Cadastro
+                        Nova Agência
                     </button>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Celular</th>
-                            <th>Data Nascimento</th>
-                            <th>Idade</th>
-
+                            <th>Número</th>
 
                             <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        {% for p in pessoas %}
+                        {% for p in agencias %}
                             <tr>
-                                <td><a href="{% url 'pessoas:detalhe' p.codigo %}">{{ p }} </a></td>
-                                <td><a href="#">{{ p.cpf }} </a></td>
-                                <td style="text-align: center">{{ p.celular | default_if_none:'' }} </td>
-                                <td style="text-align: center">{{ p.data_nasc | date:'d/m/Y' }}</td>
-                                <td>{{ p.data_nasc | timesince  }}</td>
+                                <td><a href="#">{{ p }} </a> </td>
 
                                 <td style="text-align: center">
-                                    <a href="{% url 'pessoas:detalhe' p.codigo %}"> <i class="far fa-edit nav-icon fa-1x"></i></a> &nbsp;
-                                    <a href="{% url 'pessoas:excluir' p.codigo %}"> <i class="fas fa-trash nav-icon fa-1x"></i></a> &nbsp;
-                                      <a href="{% url 'pessoas:json' p.codigo %}" target="_blank"> <i class="fas fa-download nav-icon fa-1x" ></i></a>
+
+{#                                    <a href="{% url 'pessoas:detalhe' p.codigo %}"> <i class="far fa-edit nav-icon fa-1x"></i></a> &nbsp;#}
+{#                                    <a href="{% url 'pessoas:excluir' p.codigo %}"> <i class="fas fa-trash nav-icon fa-1x"></i></a> &nbsp;#}
+{#                                    <a href="{% url 'pessoas:json' p.codigo %}" target="_blank"> <i class="fas fa-download nav-icon fa-1x" ></i></a>#}
 
 
                                 </td>

@@ -3,8 +3,9 @@
 
 
 {% block topo %}
-     <li class="breadcrumb-item"><a href="{% url 'pessoas:index' %}">HOME</a></li>
-    <li class="breadcrumb-item active">PESSOAS</li>
+    <li class="breadcrumb-item"><a href="{% url 'cartorio:estados'  %}"> ESTADOS </a> </li>
+    <li class="breadcrumb-item"><a href="{% url 'cartorio:estado_detalhe' estado.sigla %}"> {{ estado }}</a> </li>
+
 {% endblock %}
 
 {% block content %}
@@ -14,43 +15,32 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Lista de Pessoas Cadastrados </h3>
+                    <h3 class="card-title">Lista das Cidades por Estado </h3>
                     <br>
                     <hr>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">
-                        Novo Cadastro
-                    </button>
+{#                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">#}
+{#                        Novo Cadastro#}
+{#                    </button>#}
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="example" class="table table-bordered table-striped">
+                    <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>CPF</th>
-                            <th>Celular</th>
-                            <th>Data Nascimento</th>
-                            <th>Idade</th>
 
-
-                            <th>Ações</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        {% for p in pessoas %}
+                        {% for p in cidades %}
                             <tr>
-                                <td><a href="{% url 'pessoas:detalhe' p.codigo %}">{{ p }} </a></td>
-                                <td><a href="#">{{ p.cpf }} </a></td>
-                                <td style="text-align: center">{{ p.celular | default_if_none:'' }} </td>
-                                <td style="text-align: center">{{ p.data_nasc | date:'d/m/Y' }}</td>
-                                <td>{{ p.data_nasc | timesince  }}</td>
+                                <td><a href="{% url 'cartorio:cidade' p.id %}">{{ p }} </a></td>
+
 
                                 <td style="text-align: center">
-                                    <a href="{% url 'pessoas:detalhe' p.codigo %}"> <i class="far fa-edit nav-icon fa-1x"></i></a> &nbsp;
-                                    <a href="{% url 'pessoas:excluir' p.codigo %}"> <i class="fas fa-trash nav-icon fa-1x"></i></a> &nbsp;
-                                      <a href="{% url 'pessoas:json' p.codigo %}" target="_blank"> <i class="fas fa-download nav-icon fa-1x" ></i></a>
 
 
                                 </td>
@@ -61,6 +51,9 @@
 
                         </tbody>
                     </table>
+
+                  <hr>
+                    <a class="btn btn-info" href="{{request.META.HTTP_REFERER|escape}}" > Voltar </a>
 
                 </div>
             </div>

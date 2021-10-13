@@ -6,3 +6,5 @@ sweetify==2.0.0
 django-anymail[mailgun]
 Pillow
 django-smuggler
+djoser==2.1.*
+django-cors-headers==3.8.0

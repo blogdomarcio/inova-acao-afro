@@ -4,6 +4,7 @@
 
 
 {% block topo %}
+    <li class="breadcrumb-item"><a href="{% url 'pessoas:index' %}">HOME</a></li>
     <li class="breadcrumb-item active"><a href="{% url 'pessoas:lista' %}"> PESSOAS </a></li>
     <li class="breadcrumb-item active"> {{ pessoa | upper }} </li>
 {% endblock %}
@@ -35,20 +36,23 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="bairro">Nome</label>
-                                        <input type="text" class="form-control" id="nome" name="nome" value="{{ pessoa }}"
+                                        <input type="text" class="form-control" id="nome" name="nome"
+                                               value="{{ pessoa }}"
                                                placeholder="Nome da Pessoa" required autocomplete="off">
                                     </div>
 
                                     <div class="form-group col-md-3">
                                         <label for="bairro">CPF</label>
-                                        <input type="text" class="form-control cpf" id="cpf" name="cpf" value="{{ pessoa.cpf }}"
+                                        <input type="text" class="form-control cpf" id="cpf" name="cpf"
+                                               value="{{ pessoa.cpf }}"
                                                placeholder="" autocomplete="off" required>
                                     </div>
 
 
                                     <div class="form-group col-md-3">
                                         <label for="bairro">RG</label>
-                                        <input type="text" class="form-control" id="rg" name="rg" value="{{ pessoa.rg }}"
+                                        <input type="text" class="form-control" id="rg" name="rg"
+                                               value="{{ pessoa.rg }}"
                                                placeholder="" autocomplete="off" required>
                                     </div>
 
@@ -59,39 +63,45 @@
 
                                     <div class="form-group col-md-3">
                                         <label for="bairro">Data Nascimento</label>
-                                        <input type="date" class="form-control" id="data_nasc" name="data_nasc" value="{{ pessoa.data_nasc | date:'Y-m-d' }}"
+                                        <input type="date" class="form-control" id="data_nasc" name="data_nasc"
+                                               value="{{ pessoa.data_nasc | date:'Y-m-d' }}"
                                                placeholder="" autocomplete="off" required>
                                     </div>
 
                                     <div class="form-group col-md-3">
                                         <label for="bairro">Celular</label>
-                                        <input type="text" class="form-control celular" id="celular" name="celular" value="{{ pessoa.celular }}"
+                                        <input type="text" class="form-control celular" id="celular" name="celular"
+                                               value="{{ pessoa.celular }}"
                                                placeholder="" autocomplete="off" required>
                                     </div>
 
                                     <div class="form-group col-md-3">
                                         <label for="bairro">Peso {{ pessoa.peso }} </label>
-                                        <input type="number" step="0.01" class="form-control" id="peso" name="peso" value="{{ pessoa.peso | floatformat:2 }}"
+                                        <input type="number" step="0.01" class="form-control" id="peso" name="peso"
+                                               value="{{ pessoa.peso | floatformat:2 }}"
                                                placeholder="" autocomplete="off">
                                     </div>
 
                                     <div class="form-group col-md-3">
                                         <label for="altura">Altura {{ pessoa.altura }}</label>
-                                        <input type="number" class="form-control"  step="0.010" min="0.00" max="1000.00" id="altura" name="altura" value="{{ pessoa.altura | floatformat:2  }}"
-                                                 autocomplete="off">
+                                        <input type="number" class="form-control" step="0.010" min="0.00" max="1000.00"
+                                               id="altura" name="altura" value="{{ pessoa.altura | floatformat:2 }}"
+                                               autocomplete="off">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="pai">Pai</label>
-                                        <input type="text" class="form-control" id="pai" name="pai" value="{{ pessoa.pai }}"
+                                        <input type="text" class="form-control" id="pai" name="pai"
+                                               value="{{ pessoa.pai }}"
                                                placeholder="" autocomplete="off" required>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label for="mae">Mae</label>
-                                        <input type="text" class="form-control" id="mae" name="mae" value="{{ pessoa.mae }}"
+                                        <input type="text" class="form-control" id="mae" name="mae"
+                                               value="{{ pessoa.mae }}"
                                                placeholder="" autocomplete="off" required>
                                     </div>
 
@@ -117,7 +127,8 @@
                                         <select name="tipo_sanguineo" id="tipo_sanguineo"
                                                 class="js-example-responsive"
                                                 style="width: 100%">
-                                            <option selected value="{{ pessoa.tipo_sanguineo }}">{{ pessoa.tipo_sanguineo }}</option>
+                                            <option selected
+                                                    value="{{ pessoa.tipo_sanguineo }}">{{ pessoa.tipo_sanguineo }}</option>
 
                                             <option value="A-">A-</option>
                                             <option value="A+">A+</option>
@@ -138,10 +149,11 @@
                                         <select name="sexo" id="sexo"
                                                 class="js-example-responsive"
                                                 style="width: 100%">
-                                            <option selected value="{{ pessoa.sexo }}"> {% if pessoa.sexo == 'M' %} Masculino {% else %} Feminino {% endif %} </option>
+                                            <option selected value="{{ pessoa.sexo }}"> {% if pessoa.sexo == 'M' %}
+                                                Masculino {% else %} Feminino {% endif %} </option>
 
-                                            <option value="M"> Masculino </option>
-                                            <option value="F"> Feminino </option>
+                                            <option value="M"> Masculino</option>
+                                            <option value="F"> Feminino</option>
 
 
                                         </select>
@@ -156,12 +168,11 @@
                                 <button type="submit" class="btn btn-primary">Atualizar</button>
 
 
-
                             </div>
 
-                     <div class="modal-footer">
-                            <a href="{% url 'pessoas:excluir' pessoa.codigo %}" class="btn btn-danger">Excluir</a>
-                        </div>
+                            <div class="modal-footer">
+                                <a href="{% url 'pessoas:excluir' pessoa.codigo %}" class="btn btn-danger">Excluir</a>
+                            </div>
                     </form>
                 </div>
             </div>
