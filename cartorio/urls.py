@@ -2,7 +2,7 @@ from django.urls import path, include
 
 from cartorio import views
 from cartorio.api.routers import router
-
+from cartorio.views import lista_cartorios_estado
 
 app_name = 'cartorio'
 
@@ -19,6 +19,7 @@ urlpatterns = [
     path('api/lista-estados', views.lista_estados, name='api-estados'),
     path('api/lista-cidades-estado/<str:estado>', views.lista_cidades_estado, name='api-cidade-estados'),
     path('api/lista-cartorios-cidade/<str:cidade>', views.lista_cartorios_cidade, name='lista_cartorios_cidade'),
+    path('api/lista-cartorios-estado/<str:estado>', lista_cartorios_estado, name='lista_cartorios_estado'),
 
 
 

@@ -7,6 +7,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.utils import json
@@ -15,13 +16,13 @@ from rest_framework.views import APIView
 from cartorio.api.serializers import EstadosSerializer, CidadesSerializer, CartoriosSerializer
 from cartorio.models import Estado, Cidade, Cartorio
 
+
 @login_required
 def index(request):
     usuario = User.objects.get(id=request.user.id)
     cartorios = Cartorio.objects.count()
     cidades = Cidade.objects.count()
     estados = Estado.objects.count()
-
 
     context = {
         'usuario': usuario,
@@ -32,36 +33,37 @@ def index(request):
 
     return render(request, 'cartorio/index.html', context)
 
+
 @login_required
 def estados(request):
-   estados = Estado.objects.all()
-   usuario = User.objects.get(id=request.user.id)
+    estados = Estado.objects.all()
+    usuario = User.objects.get(id=request.user.id)
 
-   context = {
-       'estados': estados,
-       'usuario': usuario,
-   }
+    context = {
+        'estados': estados,
+        'usuario': usuario,
+    }
 
-   return render(request, 'cartorio/estados.html', context)
+    return render(request, 'cartorio/estados.html', context)
+
 
 @login_required
 def estado(request, estado):
+    estado = Estado.objects.get(sigla=estado)
+    cidades = Cidade.objects.filter(uf=estado)
+    usuario = User.objects.get(id=request.user.id)
 
-   estado = Estado.objects.get(sigla=estado)
-   cidades = Cidade.objects.filter(uf=estado)
-   usuario = User.objects.get(id=request.user.id)
+    context = {
+        'cidades': cidades,
+        'usuario': usuario,
+        'estado': estado,
+    }
 
-   context = {
-       'cidades': cidades,
-       'usuario': usuario,
-       'estado': estado,
-   }
+    return render(request, 'cartorio/cidades.html', context)
 
-   return render(request, 'cartorio/cidades.html', context)
 
 @login_required
 def cidade(request, cidade):
-
     cidade = Cidade.objects.get(id=cidade)
     cartorios = Cartorio.objects.filter(cidade=cidade)
 
@@ -74,6 +76,7 @@ def cidade(request, cidade):
     }
 
     return render(request, 'cartorio/cartorios.html', context)
+
 
 @login_required
 def catorio_detalhe(request, cartorio):
@@ -123,7 +126,6 @@ def lista_cartorios_cidade(request, cidade):
 
 
 def cidades(request):
-
     usuario = User.objects.get(id=request.user.id)
 
     cidades = Cidade.objects.all().order_by('nome')
@@ -157,3 +159,18 @@ def cartorios(request):
     }
 
     return render(request, 'cartorio/listacartorios.html', context)
+
+
+@api_view(['GET'])
+@renderer_classes([JSONRenderer])
+def lista_cartorios_estado(request, estado):
+    estado = Estado.objects.get(sigla=estado)
+    cartorios = Cartorio.objects.filter(cidade__uf=estado.id)
+
+    paginator = LimitOffsetPagination()
+    result_page = paginator.paginate_queryset(cartorios, request)
+    serializer = CartoriosSerializer(result_page, many=True)
+
+    return paginator.get_paginated_response(serializer.data)
+
+    # return Response(serializer.data)
