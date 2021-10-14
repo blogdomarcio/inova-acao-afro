@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>InovAção Afro - CESAR / SHARE RH | Desenvolvimento: @blogdomarcio</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+
+    <meta name="description" content="InovAção Afro - CESAR / SHARE RH | Desenvolvimento: @blogdomarcio">
+
+    <!-- Apple Stuff -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title"
+          content="InovAção Afro - CESAR / SHARE RH | Desenvolvimento: @blogdomarcio ">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="InovAção Afro - CESAR / SHARE RH | Desenvolvimento: @blogdomarcio">
+    <meta itemprop="description"
+          content="InovAção Afro - CESAR / SHARE RH | Desenvolvimento: @blogdomarcio">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="InovAção Afro - CESAR / SHARE RH | Desenvolvimento: @blogdomarcio">
+    <meta property="og:description" content="InovAção Afro - CESAR / SHARE RH | Desenvolvimento: @blogdomarcio">
+    {#<meta property="og:image" content="https://cdn.grapedrop.com/ue520f80bf5094c21a971e098bcd6bc08/pc8a5ece464244fecb152fac2aa6f394a/ogimage.jpeg?1619007717">#}
+    <meta property="og:url" content="inovacaoafro.pythonanywhere.com">
+
+
+    <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet"/>
+
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"/>
+
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+
+    <link href="{% static 'css/jquery-ui.css' %}" rel="stylesheet" type="text/css"/>
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+    {% include 'cartorio/partials/navbar.html' %}
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="{% url 'cartorio:index' %}" class="brand-link">
+            {#            <img src="{% static 'img/AdminLTELogo.png' %} " alt="Gestão Escolar"#}
+            {#                 class="brand-image img-circle elevation-3"#}
+            {#                 style="opacity: .8">#}
+            <span class="brand-text font-weight-light"> INOVAÇÃO AFRO </span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                {#                <div class="image">#}
+                {#                    <img src="{% static 'img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">#}
+                {#                </div>#}
+                <div class="info">
+                    <a href="#" class="d-block">{{ usuario | capfirst }}</a>
+                    {#                    <p style="color: gainsboro; font-size: 14px">{{ usuario.funcao }}</p>#}
+
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            {% include 'cartorio/partials/sidebar.html' %}
+            <!-- /.sidebar -->
+
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            {#                    <div class="col-sm-6">#}
+                            {#                        <h1 class="m-0 text-dark">Dashboard</h1>#}
+                            {#                    </div><!-- /.col -->#}
+                            <div class="col-sm-12">
+                                <ol class="breadcrumb float-sm-left">
+
+                                    {% block topo %}
+
+                                    {% endblock %}
+                                </ol>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+
+                {% block content %}
+
+                {% endblock %}
+                <!-- /.content -->
+            </div>
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2021 <a href="http://www.blogdomarcio.com.br">@blogdomarcio</a>.</strong>
+            Todos os direitos reservados.
+            <div class="float-right d-none d-sm-inline-block">
+                <b>Versão</b> 0.0.1
+            </div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </aside>
+</div>
+
+<!-- ./wrapper -->
+
+
+
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>#}
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{% static 'plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+{#<script>#}
+{#    $.widget.bridge('uibutton', $.ui.button)#}
+{#</script>#}
+<!-- Bootstrap 4 -->
+<script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- ChartJS -->
+<!-- jQuery Knob Chart -->
+<script src="{% static 'plugins/jquery-knob/jquery.knob.min.js' %}"></script>
+<!-- daterangepicker -->
+<!-- AdminLTE App -->
+<script src="{% static 'js/adminlte.js' %}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{% static 'js/pages/dashboard.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'js/demo.js' %} "></script>
+
+<script src="{% static 'js/geral.js' %} "></script>
+
+<script src="{% static 'js/select2.min.css' %}"></script>
+
+<script type="text/javascript" src="{% static '/js/jquery.mask.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/init.js' %}"></script>
+
+{% block scripts %}
+
+{% endblock %}
+
+{% load sweetify %}
+{% sweetify %}
+
+</body>
+</html>

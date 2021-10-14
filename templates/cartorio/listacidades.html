@@ -1,0 +1,128 @@
+{% extends 'people/dashboard/base_cartorio.html' %}
+{% load static %}
+
+
+{% block topo %}
+    <li class="breadcrumb-item"> CIDADES </li>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="container">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Lista de Todas as Cidades Cadastradas (500 por página)</h3>
+                    <br>
+                    <hr>
+
+                    {#                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPessoa">#}
+                    {#                        Novo Cadastro#}
+                    {#                    </button>#}
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+
+                            <th>Esdado</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for p in cidades %}
+                            <tr>
+                                <td><a href="{% url 'cartorio:cidade' p.id %}">{{ p }} </a></td>
+                                <td>{{ p.uf }}</td>
+
+
+
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+
+                    <br><br>
+
+                    <div class="pagination">
+    <span class="step-links">
+        {% if cidades.has_previous %}
+            <a href="?page=1">&laquo; Primeira Pagina</a>
+            <a href="?page={{ cidades.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Pagina {{ cidades.number }} de {{ cidades.paginator.num_pages }}.
+        </span>
+
+        {% if cidades.has_next %}
+            <a href="?page={{ cidades.next_page_number }}">Proxima</a>
+            <a href="?page={{ cidades.paginator.num_pages }}">Última &raquo;</a>
+        {% endif %}
+    </span>
+
+                        <br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}
+
+{% block scripts %}
+
+    <script src="{% static 'plugins/datatables/jquery.dataTables.js' %} "></script>
+    <script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.js' %} "></script>
+
+
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "order": [[0, 'asc']],
+                "aLengthMenu": [[25, 50, 75, -1], [25, 50, 75, "All"]],
+                "iDisplayLength": 50,
+                "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+
+
+                }
+            });
+
+        });
+
+    </script>
+
+{% endblock %}

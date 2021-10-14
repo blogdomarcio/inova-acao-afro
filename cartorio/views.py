@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -118,3 +119,40 @@ def lista_cartorios_cidade(request, cidade):
     cartorios = Cartorio.objects.filter(cidade=cidade)
     serializer = CartoriosSerializer(cartorios, many=True)
     return Response(serializer.data)
+
+
+def cidades(request):
+
+    usuario = User.objects.get(id=request.user.id)
+
+    cidades = Cidade.objects.all().order_by('nome')
+
+    paginator = Paginator(cidades, 500)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'cidades': page_obj,
+        'usuario': usuario,
+    }
+
+    return render(request, 'cartorio/listacidades.html', context)
+
+
+def cartorios(request):
+    usuario = User.objects.get(id=request.user.id)
+
+    cartorios = Cartorio.objects.all().order_by('nome_oficial')
+
+    paginator = Paginator(cartorios, 500)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'cartorios': page_obj,
+        'usuario': usuario,
+    }
+
+    return render(request, 'cartorio/listacartorios.html', context)

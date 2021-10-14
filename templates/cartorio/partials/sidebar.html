@@ -1,0 +1,64 @@
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item has-treeview menu-open">
+
+            <a href="#" class="nav-link active" style='margin-top: 30px'>
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    CARTORIOS
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+                <li class="nav-item">
+                    <a href="{% url 'cartorio:index' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-danger"></i>
+                        <p>
+                            DASHBOARD
+                            {#                <span class="right badge badge-danger">New</span>#}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'cartorio:estados' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-danger"></i>
+                        <p>
+                            ESTADOS
+                            {#                <span class="right badge badge-danger">New</span>#}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'cartorio:cidades' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-danger"></i>
+                        <p>
+                            CIDADES
+                            {#                <span class="right badge badge-danger">New</span>#}
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'cartorio:cartorios' %}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-danger"></i>
+                        <p>
+                            CARTÓRIOS
+                            {#                <span class="right badge badge-danger">New</span>#}
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</nav>
+<!-- /.sidebar-menu -->
+
+</div>
+
+</aside>

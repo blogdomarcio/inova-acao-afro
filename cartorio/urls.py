@@ -9,7 +9,9 @@ app_name = 'cartorio'
 urlpatterns = [
     path('api/', include(router.urls)),
     path('', views.index, name='index'),
-    path('estados', views.estados, name='estados'),
+    path('estados/', views.estados, name='estados'),
+    path('cidades/', views.cidades, name='cidades'),
+    path('cartorios/', views.cartorios, name='cartorios'),
     path('estado/<str:estado>/', views.estado, name='estado_detalhe'),
     path('cidade/<int:cidade>', views.cidade, name='cidade'),
     path('cartorio/<int:cartorio>', views.catorio_detalhe, name='catorio_detalhe'),

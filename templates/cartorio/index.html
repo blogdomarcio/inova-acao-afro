@@ -1,4 +1,4 @@
-{% extends 'people/dashboard/base.html' %}
+{% extends 'people/dashboard/base_cartorio.html' %}
 
 
 {% block content %}
@@ -36,7 +36,7 @@
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Acesse a Lista... <i
+                        <a href="{% url 'cartorio:cidades' %}" class="small-box-footer">Acesse a Lista... <i
                                 class="fas fa-arrow-circle-right"></i></a>
 
                     </div>
@@ -53,7 +53,7 @@
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="{% url 'cartorio:estados' %}" class="small-box-footer">Acesse a Lista... <i
+                        <a href="{% url 'cartorio:cartorios' %}" class="small-box-footer">Acesse a Lista... <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -78,30 +78,30 @@
                 <!-- ./col -->
             </div>
 
-            <div class="container">
-
-                <form action="#" method="get">
-
-                    <div class="row">
-
-                        <div class="form-group col-md-6">
-
-                            <label for="tags">Busque por Nome</label>
-                            <input type="text" id="tags" name="nome" class="form-control">
-                        </div>
-
-                        <div class="form-group col-md-3">
-
-
-                            <button type="submit" class="btn btn-info" style="margin-top: 30px"> Buscar</button>
-
-                        </div>
-                    </div>
-
-                </form>
-
-
-            </div>
+{#            <div class="container">#}
+{##}
+{#                <form action="#" method="get">#}
+{##}
+{#                    <div class="row">#}
+{##}
+{#                        <div class="form-group col-md-6">#}
+{##}
+{#                            <label for="tags">Busque por Nome</label>#}
+{#                            <input type="text" id="tags" name="nome" class="form-control">#}
+{#                        </div>#}
+{##}
+{#                        <div class="form-group col-md-3">#}
+{##}
+{##}
+{#                            <button type="submit" class="btn btn-info" style="margin-top: 30px"> Buscar</button>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </form>#}
+{##}
+{##}
+{#            </div>#}
 
 
         </div>
