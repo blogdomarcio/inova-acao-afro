@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.http import HttpResponse
@@ -14,7 +15,7 @@ from rest_framework.views import APIView
 from cartorio.api.serializers import EstadosSerializer, CidadesSerializer, CartoriosSerializer
 from cartorio.models import Estado, Cidade, Cartorio
 
-
+@login_required
 def index(request):
     usuario = User.objects.get(id=request.user.id)
     cartorios = Cartorio.objects.count()
@@ -31,7 +32,7 @@ def index(request):
 
     return render(request, 'cartorio/index.html', context)
 
-
+@login_required
 def estados(request):
    estados = Estado.objects.all()
    usuario = User.objects.get(id=request.user.id)
@@ -43,7 +44,7 @@ def estados(request):
 
    return render(request, 'cartorio/estados.html', context)
 
-
+@login_required
 def estado(request, estado):
 
    estado = Estado.objects.get(sigla=estado)
@@ -58,7 +59,7 @@ def estado(request, estado):
 
    return render(request, 'cartorio/cidades.html', context)
 
-
+@login_required
 def cidade(request, cidade):
 
     cidade = Cidade.objects.get(id=cidade)
@@ -74,7 +75,7 @@ def cidade(request, cidade):
 
     return render(request, 'cartorio/cartorios.html', context)
 
-
+@login_required
 def catorio_detalhe(request, cartorio):
     cartorio = Cartorio.objects.get(id=cartorio)
 
