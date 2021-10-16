@@ -7,7 +7,7 @@ from cartorio.views import lista_cartorios_estado
 app_name = 'cartorio'
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('api-rest/', include(router.urls)),
     path('dashboard/', views.index, name='index'),
     path('estados/', views.estados, name='estados'),
     path('cidades/', views.cidades, name='cidades'),
