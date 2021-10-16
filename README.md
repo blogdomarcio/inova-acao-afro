@@ -1,7 +1,7 @@
 # inova-acao-afro
 Projeto Desenvolvido durante o curso Inova Ação Afro - CESAR / SHARE RH
 
-Produção: https://inovacaoafro.pythonanywhere.com
+Curriculo: https://inovacaoafro.pythonanywhere.com
 
 Git: https://github.com/blogdomarcio/inova-acao-afro
 
@@ -30,10 +30,10 @@ Git: https://github.com/blogdomarcio/inova-acao-afro
 
     
     
-    - https://inovacaoafro.pythonanywhere.com/cartorio/api-rest/
-    - https://inovacaoafro.pythonanywhere.com/cartorio/api/lista-estados
-    - https://inovacaoafro.pythonanywhere.com/cartorio/api/lista-cidades-estado/SP
-    - https://inovacaoafro.pythonanywhere.com/cartorio/api/lista-cartorios-cidade/4315
+    - https://inovacaoafro.pythonanywhere.com/cartorios/api-rest/
+    - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-estados
+    - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-cidades-estado/SP
+    - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-cartorios-cidade/4315
     
 ## Cadastro de Pessoas
 
