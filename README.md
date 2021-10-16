@@ -1,7 +1,7 @@
 # inova-acao-afro
 Projeto Desenvolvido durante o curso Inova Ação Afro - CESAR / SHARE RH
 
-Curriculo: https://inovacaoafro.pythonanywhere.com / www.marcioweb.com.br
+Curriculo: https://inovacaoafro.pythonanywhere.com
 
 Git: https://github.com/blogdomarcio/inova-acao-afro
 
