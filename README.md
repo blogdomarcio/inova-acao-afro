@@ -14,9 +14,21 @@ Git: https://github.com/blogdomarcio/inova-acao-afro
     passo 3 : pyhton manage.py load_bairros
     passo 4 : pyhton manage.py load_cartorios
 
-  - https://inovacaoafro.pythonanywhere.com/cartorio
+  - https://inovacaoafro.pythonanywhere.com/cartorios/dashboard/
     
     #### API's com Django Restframework
+    
+    | Endpoint  |  Método  |  Ação  |
+    | ------------------- | ------------------- | ------------------- |
+    |  https://inovacaoafro.pythonanywhere.com/cartorios |  GET |  Retorna lista de cartórios paginadas de 50 em 50 |
+    |  https://inovacaoafro.pythonanywhere.com/cartorios/{uf} |  GET |  Retorna a lista de cartórios da UF paginadas de 50 em 50 |
+    |  https://inovacaoafro.pythonanywhere.com/cartorios/{id} |  GET |  Retorna os detalhes de um cartório |
+    |  https://inovacaoafro.pythonanywhere.com/cartorios |  POST |  Adiciona um novo cartório à base de dados |
+    |  https://inovacaoafro.pythonanywhere.com/cartorios{id} |  PUT |  Atualização completa de um cartório |
+    |  https://inovacaoafro.pythonanywhere.com/cartorios{id} |  PATCH |  Atualização Parcial de um cartório |
+    |  https://inovacaoafro.pythonanywhere.com/cartorios{id} |  DELETE |  Remove um cartório da base de dados |
+
+    
     
     - https://inovacaoafro.pythonanywhere.com/cartorio/api
     - https://inovacaoafro.pythonanywhere.com/cartorio/api/lista-estados

@@ -32,7 +32,7 @@ urlpatterns = [
     path('', include('web.urls')),
     path('pessoas/', include('peoples.urls')),
     path('banco/', include('banco.urls')),
-    path('cartorio/', include('cartorio.urls')),
+    path('cartorios/', include('cartorio.urls')),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), {'next_page': '/'}, name='logout'),
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
