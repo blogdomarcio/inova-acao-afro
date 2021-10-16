@@ -50,7 +50,7 @@ class Cartorio(models.Model):
     observacao = models.CharField(max_length=100, null=True, blank=True)
     horario = models.CharField(max_length=100, null=True, blank=True)
     abrangencia = models.CharField(max_length=100, null=True, blank=True)
-    atribuicoes = models.CharField(max_length=100, null=True, blank=True)
+    atribuicoes = models.CharField(max_length=200, null=True, blank=True)
     comarca = models.CharField(max_length=100, null=True, blank=True)
     entrancia = models.CharField(max_length=100, null=True, blank=True)
 

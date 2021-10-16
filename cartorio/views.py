@@ -1,13 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.generics import get_object_or_404
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.utils import json
@@ -99,6 +101,51 @@ def catorio_detalhe(request, cartorio):
 #         return Response(estados)
 
 
+@api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
+@renderer_classes([JSONRenderer])
+def api_cartorio(request, cartorio):
+    try:
+        cartorio = Cartorio.objects.get(id=cartorio)
+    except Cartorio.DoesNotExist:
+        return JsonResponse({'message': 'Cartorio inexistente'}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+
+        serializer = CartoriosSerializer(cartorio, many=False)
+
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        cartorio_data = JSONParser().parse(request)
+        cartorio_serializer = CartoriosSerializer(data=cartorio_data)
+        if cartorio_serializer.is_valid():
+            cartorio_serializer.save()
+            return JsonResponse(cartorio_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(cartorio_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+
+        cartorio.delete()
+        return JsonResponse({'message': 'Cartório excluído com sucesso!'})
+
+    elif request.method == 'PUT':
+        cartorio_data = JSONParser().parse(request)
+        cartorio_serializer = CartoriosSerializer(cartorio, data=cartorio_data)
+        if cartorio_serializer.is_valid():
+            cartorio_serializer.save()
+            return JsonResponse(cartorio_serializer.data)
+        return JsonResponse(cartorio_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    elif request.method == 'PATCH':
+        cartorio_data = JSONParser().parse(request)
+        cartorio_serializer = CartoriosSerializer(cartorio, data=cartorio_data)
+        if cartorio_serializer.is_valid():
+            cartorio_serializer.save()
+            return JsonResponse(cartorio_serializer.data)
+        return JsonResponse(cartorio_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
 @api_view(['GET'])
 @renderer_classes([JSONRenderer])
 def lista_estados(request):
@@ -164,7 +211,13 @@ def cartorios(request):
 @api_view(['GET'])
 @renderer_classes([JSONRenderer])
 def lista_cartorios_estado(request, estado):
-    estado = Estado.objects.get(sigla=estado)
+    try:
+        estado = Estado.objects.get(sigla=estado)
+
+    except Estado.DoesNotExist:
+
+        return JsonResponse({'message': 'Estado inexistente'}, status=status.HTTP_404_NOT_FOUND)
+
     cartorios = Cartorio.objects.filter(cidade__uf=estado.id)
 
     paginator = LimitOffsetPagination()
@@ -173,4 +226,22 @@ def lista_cartorios_estado(request, estado):
 
     return paginator.get_paginated_response(serializer.data)
 
-    # return Response(serializer.data)
+
+@api_view(['POST', 'GET', ])
+@renderer_classes([JSONRenderer])
+def add_cartorio(request):
+    if request.method == 'GET':
+        cartorios = Cartorio.objects.all()
+        paginator = LimitOffsetPagination()
+        result_page = paginator.paginate_queryset(cartorios, request)
+        serializer = CartoriosSerializer(result_page, many=True)
+
+        return paginator.get_paginated_response(serializer.data)
+
+    if request.method == 'POST':
+        cartorio_data = JSONParser().parse(request)
+        cartorio_serializer = CartoriosSerializer(data=cartorio_data)
+        if cartorio_serializer.is_valid():
+            cartorio_serializer.save()
+            return JsonResponse(cartorio_serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(cartorio_serializer.errors, status=status.HTTP_400_BAD_REQUEST)

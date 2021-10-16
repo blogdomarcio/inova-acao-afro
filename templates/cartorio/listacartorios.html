@@ -28,6 +28,7 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Nome Oficial</th>
                             <th>Atribuições</th>
                             <th>Cidade</th>
@@ -39,6 +40,7 @@
 
                         {% for p in cartorios %}
                             <tr>
+                            <td>{{ p.id }}</td>
                                 <td width="450px"><a href="{% url 'cartorio:catorio_detalhe' p.id %}">{{ p.nome_oficial }} </a></td>
                                 <td>{{ p.atribuicoes }}</td>
                                 <td>{{ p.cidade | upper}}</td>

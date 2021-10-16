@@ -16,8 +16,8 @@ class CidadesSerializer(serializers.ModelSerializer):
         fields = ('id', 'nome', 'uf')
 
 class CartoriosSerializer(serializers.ModelSerializer):
-    cidade = serializers.StringRelatedField(many=False)
-    bairro = serializers.StringRelatedField(many=False)
+    cidade = serializers.StringRelatedField()
+    bairro = serializers.StringRelatedField()
     class Meta:
         model = Cartorio
         fields = '__all__'
