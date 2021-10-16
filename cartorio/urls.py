@@ -19,9 +19,9 @@ urlpatterns = [
     path('', views.add_cartorio, name='add-cartorio'),
     path('<int:cartorio>', views.api_cartorio, name='api-cartorio'),
     path('<str:estado>', views.lista_cartorios_estado, name='api-cidade-estados'),
-    path('lista-estados', views.lista_estados, name='api-estados'),
-    path('lista-cartorios-cidade/<str:cidade>', views.lista_cartorios_cidade, name='lista_cartorios_cidade'),
-    path('lista-cidadas-estado/<str:estado>', views.lista_cidades_estado, name='lista_cartorios_estado'),
+    path('api/lista-estados/', views.lista_estados, name='api-estados'),
+    path('api/lista-cartorios-cidade/<str:cidade>/', views.lista_cartorios_cidade, name='lista_cartorios_cidade'),
+    path('api/lista-cidades-estado/<str:estado>/', views.lista_cidades_estado, name='lista_cartorios_estado'),
 
 
 
