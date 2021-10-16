@@ -33,7 +33,7 @@ Git: https://github.com/blogdomarcio/inova-acao-afro
     - https://inovacaoafro.pythonanywhere.com/cartorios/api-rest/
     - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-estados
     - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-cidades-estado/SP
-    - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-cartorios-cidade/4315
+    - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-cartorios-cidade/388
     
 ## Cadastro de Pessoas
 
