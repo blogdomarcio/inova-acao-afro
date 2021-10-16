@@ -16,6 +16,8 @@ Git: https://github.com/blogdomarcio/inova-acao-afro
 
   - https://inovacaoafro.pythonanywhere.com/cartorios/dashboard/
     
+    <img src='https://marcioweb.s3.amazonaws.com/screen.PNG'>
+    
     #### API's com Django Restframework
     
     | Endpoint  |  Método  |  Ação  |
