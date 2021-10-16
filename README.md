@@ -37,7 +37,7 @@ Git: https://github.com/blogdomarcio/inova-acao-afro
     - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-cidades-estado/SP
     - https://inovacaoafro.pythonanywhere.com/cartorios/api/lista-cartorios-cidade/388
      
-   ###### Lista Cartorios por Cidade: Itapetinga/BA - ID CIDADE: 338
+   ###### Lista Cartorios por Cidade: Itapetinga/BA - ID CIDADE: 388
    <img src='https://marcioweb.s3.amazonaws.com/api_cidades.PNG'>
     
 ## Cadastro de Pessoas
